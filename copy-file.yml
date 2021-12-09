@@ -6,7 +6,7 @@
   tasks:
   - name: copy a test file
     copy:
-      src: upload/test.sh
+      src: /var/lib/awx/projects/_8__first_project/upload/test.sh
       dest: /tmp/
       owner: root
       group: root
