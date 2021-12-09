@@ -1,0 +1,6 @@
+---
+- hosts: kloxoweb
+  remote_user: root
+  tasks:
+    - name: test connection
+      service: name=httpd state=started
