@@ -4,7 +4,7 @@
   remote_user: root
   tasks:
      - name: Transfer the script
-       copy: src=/var/lib/awx/projects/_8__first_project/upload/iptables.sh dest=/home/iptables.sh mode=0777
+       copy: src=/var/lib/awx/projects/_8__first_project/upload/iptables.sh dest=/root/iptables.sh mode=0777
 
      - name: Execute the script
        command: sh /root/iptables.sh
