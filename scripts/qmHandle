@@ -30,8 +30,8 @@ my ($bigtodo) = (-d "${queue}todo/0") ? 0 : 1; # 1 means no big-todo
 #my ($startqmail) = '/usr/local/bin/svc -u /service/qmail-deliver';
 
 # While this is if you have a Debian GNU/Linux with its qmail package
-my ($stopqmail) = 'rcqmail stop; killall qmail-remote';
-my ($startqmail) = '/etc/init.d/qmail start';
+my ($stopqmail) = 'systemctl stop qmail';
+my ($startqmail) = 'systemctl start qmail';
 
 # If you don't have scripts, leave $stopqmail blank (the process will
 # be hunted and killed by qmHandle):
