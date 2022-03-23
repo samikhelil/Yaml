@@ -1,6 +1,6 @@
 ---
 - name: execute then execute script
-  hosts: vps3 
+  hosts: pleskserver 
   tasks: 
     - name: download file 
       get_url: 
