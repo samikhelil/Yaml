@@ -1,6 +1,6 @@
 ---
 - name: Transfer and execute a script.
-  hosts: openvz
+  hosts: vps3
   remote_user: root
   tasks:
      - name: Transfer the script
