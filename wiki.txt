@@ -21,3 +21,12 @@ We can now append our drop rule:
 ++++++++++XFS (sdc1): Filesystem has duplicate UUID c4e2eef9-c744-4c64-8ebc-044373f84ddc - can't mount++++++++++++++
 https://access.redhat.com/solutions/5494781
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+								
+
+								
+
+
+
++++++++++++++++++++++++++++++++++++++++++Network+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#bridge
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
