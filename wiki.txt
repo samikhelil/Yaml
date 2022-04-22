@@ -41,3 +41,34 @@ https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-f
 initrams: fsck /dev/vd1 -y 
 reboot or exit
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+						manage postfix queue
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Display the list of Queued mails , deferred mails, and Pending mails
+#postqueue -p
+
+
+To Display the mail header and contents
+#postcat -q C79CEC3F6BC
+#postcat -q “Queue ID”
+
+
+To check the total number of mails in the queue
+#postqueue -p | grep -c "^[A-Z0-9]"
+To reattempt delivery of all mails in the queue
+#postqueue -f
+
+To remove all mails from a particular mail id  test.test@domain.com
+
+#mailq | tail +2 | awk 'BEGIN { RS = "" } / test.test@domain\.com$/ { print $1 }' | tr -d '*!' | postsuper -d -
+#mailq|awk ' /root@mail.your-server.com/ {print $1}' | tr -d '*' | xargs -rn1 postsuper -d
+#mailq | awk ' /^[0-9A-F][0-9A-F]*.*some-domain.com$/ {print $1}' | tr -d '*' | xargs -rn1 postsuper -d
+
+
+
+To attempt to send one particular mail
+#postqueue -I C79CEC3F6BC
+#postqueue -i “Queue ID”
+
