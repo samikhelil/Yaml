@@ -118,3 +118,25 @@ Export list for ansible1:
 					SAR command                                        
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 https://www.geeksforgeeks.org/sar-command-linux-monitor-system-performance/
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                        Plesk remove ip
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+root@VPS-Ubuntu:/# /usr/local/psa/bin/reconfigurator --autoconfigure
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Database: [<41.226.30.57>, <41.226.30.131>] 
+Actual: [<41.226.30.131>] 
+Removed IPs: [<41.226.30.57>] 
+Added IPs: [] 
+Mapping: {} 
+Old not remapped: [<41.226.30.57>] 
+New not used: [] 
+Nothing to do. 
+
+root@VPS-Ubuntu:/# plesk db -Nse "SELECT d.name FROM DomainServices ds INNER JOIN IpAddressesCollections ipac ON ds.ipCollectionId = ipac.ipCollectionId INNER JOIN domains d ON d.id = ds.dom_id JOIN IP_Addresses ip on ipac.ipaddressid=ip.id WHERE (ds.type = 'web' OR ds.type = 'mail') and ipac.ipAddressId = (select id from IP_Addresses where ip_address='41.226.30.57') GROUP BY d.name ASC"
+anpe.nat.tn
+
+==>apply webhosting access ==>then remove ip from Gui
+
