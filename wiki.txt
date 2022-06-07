@@ -140,3 +140,10 @@ anpe.nat.tn
 
 ==>apply webhosting access ==>then remove ip from Gui
 
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                        qmail remove failure notice
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+find /var/qmail/mailnames/domaine.com/samikhelil/Maildir/cur/* |xargs grep failure |cut -f 1,2 -d ":" |xargs rm -rvf
