@@ -23,7 +23,7 @@ We can now append our drop rule:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 https://access.redhat.com/solutions/5494781
-								
+#xfs_admin -U generate /dev/vg/lv								
 
 								
 
