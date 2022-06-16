@@ -158,4 +158,26 @@ find /var/qmail/mailnames/domaine.com/samikhelil/Maildir/cur/* |xargs grep failu
 plesk db dump psa > /root/psa_dump.sql
 ==>restore                                                                                                                                  
 plesk db < /root/psa_dump.sql
-
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                        sftp over ssh
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#groupadd sftponly
+#useradd -g sftponly -s /bin/false -m -d /home/sftpuser sftpuser
+#chown root: /home/sftpuser
+#chmod 755 /home/sftpuser
+#mkdir /home/sftpuser/ftp
+#chown sftpuser: /home/sftpuser/ftp
+#chmod 750 /home/sftpuser/ftp
+#usermod -d /home/sftpuser/ftp sftpuser
+#vim /etc/ssh/sshd_config
+==>add this config
+----------------------------------------------------
+#Subsystem sftp /usr/libexec/openssh/sftp-server
+Subsystem sftp internal-sftp
+Match Group sftponly
+#ChrootDirectory %h
+ChrootDirectory /home/%u
+ForceCommand internal-sftp
+AllowTcpForwarding no
+X11Forwarding no
+----------------------------------------------------
