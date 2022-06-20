@@ -181,3 +181,23 @@ ForceCommand internal-sftp
 AllowTcpForwarding no
 X11Forwarding no
 ----------------------------------------------------
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                        restore from mysql folder
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+create database on new server 
+cp ibdata1, ib_logfile0, ib_logfile1 from old to new server under /var/lib/mysql/
+cp old content from mysql database folder /var/lib/mysql/wordpress_c/* to the new server /var/lib/mysql/wordpress_c/
+restart mysqld
+dump the database then use it.
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                                        
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
