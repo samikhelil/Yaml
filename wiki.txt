@@ -152,12 +152,14 @@ find /var/qmail/mailnames/domaine.com/samikhelil/Maildir/cur/* |xargs grep failu
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                        backup / restore db plesk
+                                        backup / restore all dbs plesk
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ==>backup
-plesk db dump psa > /root/psa_dump.sql
-==>restore                                                                                                                                  
-plesk db < /root/psa_dump.sql
+/usr/sbin/plesk db -e "show databases" | grep -v -E "^Database|information_schema|performance_schema|phpmyadmin" > dblist.txt
+sleep 5
+cat dblist.txt |while read i; do /usr/sbin/plesk db dump "$i" > /opt/topnet/backupdb/"$i".sql; done
+==>restore                             
+for i in `cat /root/dblist.txt`; do MYSQL_PWD=`cat /etc/psa/.psa.shadow` mysql -u admin < /opt/topnet/backupdb/"$i".sql; done                                                                                                     
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                                         sftp over ssh
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
